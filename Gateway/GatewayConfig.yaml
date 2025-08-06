@@ -1,0 +1,14 @@
+ParticipantConfigurations:
+  - Name: GatewayParticipant
+    CAN:
+      - Name: CAN1
+    Ethernet:
+      - Name: ETH1
+
+  - Name: CANReader
+    CAN:
+      - Name: CAN1
+
+  - Name: EthernetWriter
+    Ethernet:
+      - Name: ETH1

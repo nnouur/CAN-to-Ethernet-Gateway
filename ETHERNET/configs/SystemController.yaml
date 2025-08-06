@@ -1,0 +1,6 @@
+ParticipantName: SystemController
+
+Services:
+  - Type: SystemController
+  - Type: LifecycleService
+    OperationMode: Coordinated

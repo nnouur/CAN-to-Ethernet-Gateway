@@ -1,0 +1,8 @@
+ParticipantName: CanWriter
+
+Services:
+  - Type: CanController
+    Name: CAN1
+    Network: CAN1
+  - Type: LifecycleService
+    OperationMode: Coordinated

@@ -1,0 +1,11 @@
+ParticipantConfiguration:
+  Controllers:
+    - Name: CAN1
+      Network: CAN1
+      Type: Can
+
+Description: Sample configuration for CAN
+Logging:
+  Sinks:
+    - Level: Info
+      Type: Stdout

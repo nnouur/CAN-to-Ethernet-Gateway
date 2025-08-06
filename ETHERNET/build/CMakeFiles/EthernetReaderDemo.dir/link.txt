@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/EthernetReaderDemo.dir/EthernetReaderDemo.cpp.o -o EthernetReaderDemo   -L/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/ETHERNET/../SilKit/lib  -Wl,-rpath,/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/ETHERNET/../SilKit/lib -lpthread -lSilKit 

@@ -1,0 +1,8 @@
+ParticipantName: EthernetReader
+
+Services:
+  - Type: EthernetController
+    Name: Eth1
+    Network: Eth1
+  - Type: LifecycleService
+    OperationMode: Coordinated
