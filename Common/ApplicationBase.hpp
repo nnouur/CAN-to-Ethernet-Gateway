@@ -2,6 +2,9 @@
 //
 // SPDX-License-Identifier: MIT
 
+#pragma once
+
+
 #include "silkit/SilKit.hpp"
 #include "silkit/services/logging/ILogger.hpp"
 #include "silkit/services/orchestration/all.hpp"

@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-#include "ApplicationBase.hpp"
+#include "../Common/ApplicationBase.hpp"
 #include "CanDemoCommon.hpp"
 
 class CanReader: public ApplicationBase

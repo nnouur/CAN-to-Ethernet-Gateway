@@ -6,6 +6,14 @@
 #include "silkit/services/ethernet/string_utils.hpp"
 #include "silkit/services/logging/ILogger.hpp"
 
+#include "silkit/SilKit.hpp"
+#include "silkit/services/logging/ILogger.hpp"
+#include "silkit/services/orchestration/all.hpp"
+#include "silkit/services/orchestration/string_utils.hpp"
+
+#include "../Common/ApplicationBase.hpp"
+
+
 using namespace SilKit::Services::Ethernet;
 
 // This is the common behavior used in EthernetReaderDemo and EthernetWriterDemo

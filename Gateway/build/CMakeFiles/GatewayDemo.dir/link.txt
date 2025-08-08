@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/GatewayDemo.dir/GatewayDemo.cpp.o CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.o -o GatewayDemo   -L/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/../SilKit/lib  -Wl,-rpath,/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/../SilKit/lib -lpthread -lSilKit 
+/usr/bin/c++ CMakeFiles/GatewayDemo.dir/GatewayDemo.cpp.o CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.o -o GatewayDemo   -L/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/../SilKit/lib  -Wl,-rpath,/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/../SilKit/lib -lSilKit 

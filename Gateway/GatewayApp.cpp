@@ -1,81 +1,55 @@
 #include "GatewayApp.hpp"
-#include <silkit/config/ParticipantConfiguration.hpp>
-#include <silkit/services/orchestration/ILifecycleService.hpp>
 #include <iostream>
 #include <vector>
 
-using namespace SilKit;
-using namespace SilKit::Services::Can;
-using namespace SilKit::Services::Ethernet;
+using namespace SilKit::Services;
 
-GatewayApp::GatewayApp(const std::string& participantName, const std::string& canNetwork, const std::string& ethernetNetwork)
-    : _canNetwork{canNetwork}, _ethernetNetwork{ethernetNetwork}
+GatewayApp::GatewayApp(const std::string& participantName, const std::string& configFile)
 {
-    auto config = SilKit::Config::ParticipantConfigurationFromString(R"(
-        ParticipantConfiguration:
-            logging:
-                sinks:
-                  - type: Stdout
-                    level: Info
-    )");
+    _participant = SilKit::CreateParticipant(
+        SilKit::Config::ParticipantConfigurationFromFile(configFile),
+        participantName
+    );
 
-    _participant = SilKit::CreateParticipant(config, participantName);
+    _canController = _participant->CreateCanController("CAN1", "CAN1");
+    _ethController = _participant->CreateEthernetController("ETH1", "ETH1");
 
-    SetupCan();
-    SetupEthernet();
+    SetupCanToEthernet();
+    SetupEthernetToCan();
 }
 
-void GatewayApp::SetupCan()
+void GatewayApp::SetupCanToEthernet()
 {
-    _canController = _participant->CreateCanController("CAN_Controller", _canNetwork);
-
     _canController->AddFrameHandler(
-        [this](ICanController*, const CanFrameEvent& event) {
-            std::cout << "[Gateway] Received CAN frame, forwarding to Ethernet" << std::endl;
+        [this](ICanController*, const Can::CanFrameEvent& frameEvent) 
+        {
+            std::cout << "[Gateway] CAN → Ethernet | ID: 0x" << std::hex << frameEvent.frame.canId
+                      << " DLC: " << std::dec << static_cast<int>(frameEvent.frame.dataField.size()) << "\n";
 
-            // Extract CAN data into a vector
-            std::vector<uint8_t> payload(event.frame.data.begin(), event.frame.data.begin() + event.frame.dlc);
+            Ethernet::EthernetFrame ethFrame;
+            std::vector<uint8_t> rawData(frameEvent.frame.dataField.begin(), frameEvent.frame.dataField.end());
+            ethFrame.raw = rawData;
 
-            // Create Ethernet frame with the payload
-            EthernetFrame ethFrame;
-            ethFrame.raw = payload;
-
-            _ethernetController->SendFrame(ethFrame);
-        });
+            _ethController->SendFrame(ethFrame);
+        }
+    );
 }
 
-void GatewayApp::SetupEthernet()
+void GatewayApp::SetupEthernetToCan()
 {
-    _ethernetController = _participant->CreateEthernetController("ETH_Controller", _ethernetNetwork);
+    _ethController->AddFrameHandler(
+        [this](IEthernetController*, const Ethernet::EthernetFrameEvent& ethEvent) 
+        {
+            std::cout << "[Gateway] Ethernet → CAN | Size: " << ethEvent.frame.raw.size() << "\n";
 
-    _ethernetController->AddFrameHandler(
-        [this](IEthernetController*, const EthernetFrameEvent& event) {
-            std::cout << "[Gateway] Received Ethernet frame, forwarding to CAN" << std::endl;
+            Can::CanFrame canFrame;
+            canFrame.canId = 0x123; // ID fixe
+            canFrame.flags = {};
+            std::vector<uint8_t> canData(ethEvent.frame.raw.begin(), ethEvent.frame.raw.end());
+            canFrame.dataField = canData;
 
-            // Extract Ethernet payload into vector
-            std::vector<uint8_t> payload = event.frame.raw;
-
-            // Construct CAN frame
-            CanFrame canFrame;
-            canFrame.canId = 0x123;
-            canFrame.flags = CanFrameFlag::None;
-            canFrame.dlc = static_cast<uint8_t>(payload.size());
-
-            // Copy up to 8 bytes (max for CAN)
-            std::copy_n(payload.begin(), std::min<size_t>(8, payload.size()), canFrame.data.begin());
-
-            _canController->Send(canFrame);
-        });
+            _canController->SendFrame(canFrame);
+        }
+    );
 }
 
-void GatewayApp::Start()
-{
-    auto* lifecycleService = _participant->GetLifecycleService();
-
-    lifecycleService->SetCommunicationReadyHandler([] {
-        std::cout << "[Gateway] Communication ready." << std::endl;
-    });
-
-    lifecycleService->StartLifecycle();
-    lifecycleService->Run(); // blocking call
-}

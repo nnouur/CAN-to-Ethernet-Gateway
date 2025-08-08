@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-#include "ApplicationBase.hpp"
+#include "../Common/ApplicationBase.hpp"
 #include "EthernetDemoCommon.hpp"
 
 class EthernetWriter : public ApplicationBase

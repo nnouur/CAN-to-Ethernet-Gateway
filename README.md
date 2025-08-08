@@ -2,7 +2,7 @@
 This project focuses on the development of a CAN-to-Ethernet Gateway using C++, which enables the translation and routing of messages between a CAN bus and an Ethernet network.
 
 
-*****FOR THE CAN APPLICATION ****
+***FOR THE CAN APPLICATION ***
 
 Step1 : Run the SIL Kit Registry
     1.Open a terminal.
@@ -31,7 +31,7 @@ Step4 : Run the CAN Writer
     2. ./CanWriterDemo --config ../configs/SilKitConfig.yaml
 
 
-*****FOR THE Ethernet APPLICATION ****
+***FOR THE Ethernet APPLICATION ***
 
 Step1 : Run the SIL Kit Registry
     1.Open a terminal.
@@ -60,3 +60,7 @@ Step4 : Run the ETHERNET Writer
 
 
 
+./GatewayDemo ../Gateway/GatewayConfig.yaml Gateway
+
+
+./GatewayDemo ../GatewayConfig.yaml

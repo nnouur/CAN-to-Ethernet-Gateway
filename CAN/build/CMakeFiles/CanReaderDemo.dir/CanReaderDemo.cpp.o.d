@@ -1,7 +1,7 @@
 CMakeFiles/CanReaderDemo.dir/CanReaderDemo.cpp.o: \
  /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/CanReaderDemo.cpp \
  /usr/include/stdc-predef.h \
- /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/ApplicationBase.hpp \
+ /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/../Common/ApplicationBase.hpp \
  /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/../SilKit/include/silkit/SilKit.hpp \
  /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/../SilKit/include/silkit/SilKitMacros.hpp \
  /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/../SilKit/include/silkit/capi/SilKitMacros.h \
@@ -296,7 +296,7 @@ CMakeFiles/CanReaderDemo.dir/CanReaderDemo.cpp.o: \
  /usr/include/c++/11/bits/locale_conv.h \
  /usr/include/c++/11/bits/quoted_string.h /usr/include/c++/11/thread \
  /usr/include/c++/11/bits/this_thread_sleep.h \
- /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/SignalHandler.hpp \
+ /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/../Common/SignalHandler.hpp \
  /usr/include/c++/11/csignal /usr/include/signal.h \
  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
@@ -332,7 +332,7 @@ CMakeFiles/CanReaderDemo.dir/CanReaderDemo.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
  /usr/include/linux/falloc.h /usr/include/x86_64-linux-gnu/bits/stat.h \
  /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
- /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/CommandlineParser.hpp \
+ /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/../Common/CommandlineParser.hpp \
  /usr/include/c++/11/iostream \
  /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/CanDemoCommon.hpp \
  /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/CAN/../SilKit/include/silkit/services/can/all.hpp \

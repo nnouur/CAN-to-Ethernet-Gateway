@@ -1,13 +1,24 @@
 #include "GatewayApp.hpp"
-#include <string>
+#include <iostream>
 
 int main(int argc, char** argv)
 {
-    std::string canNetwork = "CAN1";
-    std::string ethernetNetwork = "ETH1";
+    if (argc < 3)
+    {
+        std::cerr << "Usage: " << argv[0] << " <ParticipantName> <ConfigFile>\n";
+        return 1;
+    }
 
-    GatewayApp app("GatewayParticipant", canNetwork, ethernetNetwork);
-    app.Start();
+    try
+    {
+        GatewayApp app(argv[1], argv[2]);
+        app.Run();
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Error starting Gateway: " << e.what() << "\n";
+        return 1;
+    }
 
     return 0;
 }
