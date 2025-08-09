@@ -81,12 +81,12 @@ clean: CMakeFiles/GatewayDemo.dir/clean
 CMakeFiles/GatewayDemo.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles --progress-num=1,2,3 "Built target GatewayDemo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles --progress-num=1,2 "Built target GatewayDemo"
 .PHONY : CMakeFiles/GatewayDemo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/GatewayDemo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/GatewayDemo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles 0
 .PHONY : CMakeFiles/GatewayDemo.dir/rule

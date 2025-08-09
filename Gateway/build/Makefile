@@ -153,30 +153,6 @@ GatewayApp.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.s
 .PHONY : GatewayApp.cpp.s
 
-GatewayDemo.o: GatewayDemo.cpp.o
-.PHONY : GatewayDemo.o
-
-# target to build an object file
-GatewayDemo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/GatewayDemo.cpp.o
-.PHONY : GatewayDemo.cpp.o
-
-GatewayDemo.i: GatewayDemo.cpp.i
-.PHONY : GatewayDemo.i
-
-# target to preprocess a source file
-GatewayDemo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/GatewayDemo.cpp.i
-.PHONY : GatewayDemo.cpp.i
-
-GatewayDemo.s: GatewayDemo.cpp.s
-.PHONY : GatewayDemo.s
-
-# target to generate assembly for a file
-GatewayDemo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/GatewayDemo.cpp.s
-.PHONY : GatewayDemo.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -189,9 +165,6 @@ help:
 	@echo "... GatewayApp.o"
 	@echo "... GatewayApp.i"
 	@echo "... GatewayApp.s"
-	@echo "... GatewayDemo.o"
-	@echo "... GatewayDemo.i"
-	@echo "... GatewayDemo.s"
 .PHONY : help
 
 

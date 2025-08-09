@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.o"
   "CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.o.d"
-  "CMakeFiles/GatewayDemo.dir/GatewayDemo.cpp.o"
-  "CMakeFiles/GatewayDemo.dir/GatewayDemo.cpp.o.d"
   "GatewayDemo"
   "GatewayDemo.pdb"
 )

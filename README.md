@@ -64,3 +64,6 @@ Step4 : Run the ETHERNET Writer
 
 
 ./GatewayDemo ../GatewayConfig.yaml
+./GatewayDemo GatewayParticipant ConfigFile.yaml
+
+./GatewayDemo Gateway ../configs/SilKitConfig.yaml

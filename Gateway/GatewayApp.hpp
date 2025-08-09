@@ -22,12 +22,14 @@
 class GatewayApp
 {
 public:
-    GatewayApp(const std::string& participantName, const std::string& configFile);
+    GatewayApp(const std::string& participantName,
+               const std::string& configFilePath);
+
     void Run();
 
 private:
-    void SetupCanToEthernet();
-    void SetupEthernetToCan();
+    void OnCanFrameReceived(const SilKit::Services::Can::CanFrame& canFrame);
+    void OnEthernetFrameReceived(const SilKit::Services::Ethernet::EthernetFrame& ethFrame);
 
     std::shared_ptr<SilKit::IParticipant> _participant;
     SilKit::Services::Can::ICanController* _canController{nullptr};

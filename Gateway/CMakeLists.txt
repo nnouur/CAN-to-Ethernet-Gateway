@@ -1,24 +1,15 @@
-cmake_minimum_required(VERSION 3.10)
-project(GatewayApp)
+cmake_minimum_required(VERSION 3.14)
+project(Gateway LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Chemin vers SilKit
-include_directories(
-    ../SilKit/include
-)
+# SilKit paths (ajuste si besoin)
+set(SILKIT_INCLUDE_DIR "../SilKit/include")
+set(SILKIT_LIB_DIR "../SilKit/lib")
 
-# Lien vers la lib SilKit
-link_directories(
-    ../SilKit/lib
-)
+add_executable(GatewayDemo GatewayApp.cpp GatewayApp.hpp)
 
-add_executable(GatewayDemo
-    GatewayDemo.cpp
-    GatewayApp.cpp
-)
-
-target_link_libraries(GatewayDemo
-    SilKit
-)
+target_include_directories(GatewayDemo PRIVATE ${SILKIT_INCLUDE_DIR})
+target_link_directories(GatewayDemo PRIVATE ${SILKIT_LIB_DIR})
+target_link_libraries(GatewayDemo PRIVATE SilKit pthread)
