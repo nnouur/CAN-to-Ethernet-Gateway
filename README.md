@@ -86,3 +86,25 @@ This project focuses on the development of a **CAN-to-Ethernet Gateway** using C
 ./GatewayDemo GatewayParticipant ConfigFile.yaml
 
 ./GatewayDemo Gateway ../configs/SilKitConfig.yaml
+
+
+
+
+cd SystemController
+../SilKit/bin/sil-kit-system-controller --configuration SystemController.yaml CanWriter CanReader EthernetWriter EthernetReader
+
+can reader : ./CanReaderDemo --config ../../SystemController/SilKitConfig.yaml
+ethernet writer : ./EthernetWriterDemo --config ../../SystemController/SilKitConfig.yaml
+
+./EthernetReaderDemo --config ../../SystemController/SilKitConfig.yaml
+./CanWriterDemo --config ../../SystemController/SilKitConfig.yaml
+
+./GatewayDemo Gateway --config ../../SystemController/SilKitConfig.yaml
+./GatewayDemo Gateway  ../../SystemController/SilKitConfig.yaml
+
+../SilKit/bin/sil-kit-system-controller --config SystemController.yaml
+
+../SilKit/bin/sil-kit-system-controller --configuration SystemController.yaml --non-interactive SystemController
+
+
+../SilKit/bin/sil-kit-system-controller --configuration SystemController.yaml EthernetWriter Gateway CanReader

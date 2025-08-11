@@ -2,6 +2,6 @@ Middleware:
   RegistryUri: silkit://localhost:8500
 
 Logging:
-  LogLevel: Info
   Sinks:
     - Type: Stdout
+      Level: Info

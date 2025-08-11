@@ -2,7 +2,7 @@ ParticipantName: EthernetWriter
 
 Services:
   - Type: EthernetController
-    Name: Eth1
-    Network: Eth1
+    Name: ETH1
+    Network: ETH1
   - Type: LifecycleService
     OperationMode: Coordinated
