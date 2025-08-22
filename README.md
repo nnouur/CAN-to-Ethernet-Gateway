@@ -77,47 +77,38 @@ This project focuses on the development of a **CAN-to-Ethernet Gateway** using C
     ./EthernetWriterDemo --network Eth1
 
 
+##  **For the Gateway ETHERNET-CAN Application**
 
-```bash
-./GatewayDemo ../Gateway/GatewayConfig.yaml Gateway
+### **Step 1 — Run the SIL Kit Registry**
+1. Open a terminal.  
+2. Navigate to the SIL Kit registry directory:  
+   ```bash
+   cd SilKit/bin
+3. Start the SIL Kit Registry:
+    ```bash
+    ./sil-kit-registry
 
+### **Step 2 -  Start the System Controller**
+1.  ```bash
+    cd SystemController
+2.  ```bash
+    ../SilKit/bin/sil-kit-system-controller --configuration SystemController.yaml  EthernetWriter Gateway CanReader
 
-./GatewayDemo ../GatewayConfig.yaml
-./GatewayDemo GatewayParticipant ConfigFile.yaml
+### **Step 3 - Run the ETHERNET Writer**
+1.  ```bash
+    cd ETHERNET/build
+2.  ```bash
+    ./EthernetWriterDemo --config ../../SystemController/SilKitConfig.yaml
 
-./GatewayDemo Gateway ../configs/SilKitConfig.yaml
+### **Step 4 - Run the GATEWAY**
+1.  ```bash
+    cd Gateway/build
+2.  ```bash
+    ./GatewayDemo --name Gateway --config ../GatewayConfig.yaml
 
+### **Step 5 - Run the CAN Reader**
+1.  ```bash
+    cd CAN/build
+2.  ```bash
+    ./CanReaderDemo --config ../../SystemController/SilKitConfig.yaml
 
-./GatewayDemo Gateway ../GatewayConfig.yaml
-
-
-
-
-cd SystemController
-../SilKit/bin/sil-kit-system-controller --configuration SystemController.yaml CanWriter CanReader EthernetWriter EthernetReader
-
-../SilKit/bin/sil-kit-system-controller --configuration SystemController.yaml  EthernetWriter Gateway CanReader
-
-can reader : ./CanReaderDemo --config ../../SystemController/SilKitConfig.yaml
-ethernet writer : ./EthernetWriterDemo --config ../../SystemController/SilKitConfig.yaml
-
-./EthernetReaderDemo --config ../../SystemController/SilKitConfig.yaml
-./CanWriterDemo --config ../../SystemController/SilKitConfig.yaml
-
-./GatewayDemo Gateway --config ../../SystemController/SilKitConfig.yaml
-./GatewayDemo Gateway  ../../SystemController/SilKitConfig.yaml
-
-../SilKit/bin/sil-kit-system-controller --config SystemController.yaml
-
-../SilKit/bin/sil-kit-system-controller --configuration SystemController.yaml --non-interactive SystemController
-
-
-../SilKit/bin/sil-kit-system-controller --configuration SystemController.yaml EthernetWriter Gateway CanReader
-
-./GatewayDemo Gateway --config ../../SystemController/SilKitConfig.yaml
-
-
-./GatewayDemo Gateway --config ../../SystemController/SilKitConfig.yaml \
-    --eth-network ETH1 --can-network CAN1
-
-./GatewayDemo --name Gateway --config ../GatewayConfig.yaml
