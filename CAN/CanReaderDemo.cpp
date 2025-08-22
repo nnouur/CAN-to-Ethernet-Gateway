@@ -43,6 +43,19 @@ private:
         });
         _canController->AddFrameHandler([this](ICanController* /*ctrl*/, const CanFrameEvent& frameEvent) {
             CanDemoCommon::FrameHandler(frameEvent, GetLogger(), _printHex);
+            // Print frame contents
+            std::stringstream ss;
+            ss << "[CanReader] Received CAN frame: ID=0x"
+            << std::hex << frameEvent.frame.canId
+            << " DLC=" << std::dec << static_cast<int>(frameEvent.frame.dataField.size())
+            << " Data=";
+
+    for (auto byte : frameEvent.frame.dataField)
+    {
+        ss << std::hex << std::uppercase << static_cast<int>(byte) << " ";
+    }
+
+    GetLogger()->Info(ss.str());
         });
     }
 

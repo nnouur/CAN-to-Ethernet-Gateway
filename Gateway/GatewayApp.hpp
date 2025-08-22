@@ -3,35 +3,41 @@
 #include <silkit/SilKit.hpp>
 #include <silkit/services/can/all.hpp>
 #include <silkit/services/ethernet/all.hpp>
-#include <silkit/services/orchestration/all.hpp>
-
-#include <memory>
-#include <string>
-
-#include "../CAN/CanDemoCommon.hpp"
 
 #include "../Common/ApplicationBase.hpp"
-#include "../Common/CommandlineParser.hpp"
-#include "../Common/SignalHandler.hpp"
 
-#include "../ETHERNET/EthernetDemoCommon.hpp"
+#include "EthReceiver.hpp"
+#include "CanSender.hpp"
 
-#include "silkit/services/all.hpp"
+#include <string>
+#include <memory>
+#include <chrono>
 
-
-class GatewayApp
+class GatewayApp : public ApplicationBase
 {
 public:
-    GatewayApp(const std::string& participantName,
-               const std::string& configFilePath);
-
-    void Run();
+    using ApplicationBase::ApplicationBase;
+    ~GatewayApp();
 
 private:
-    void OnCanFrameReceived(const SilKit::Services::Can::CanFrame& canFrame);
-    void OnEthernetFrameReceived(const SilKit::Services::Ethernet::EthernetFrame& ethFrame);
+    // ApplicationBase hooks
+    void AddCommandLineArgs() override;
+    void EvaluateCommandLineArgs() override;
+    void CreateControllers() override;
+    void InitControllers() override;
+    void DoWorkSync(std::chrono::nanoseconds) override {}
+    void DoWorkAsync() override {}
 
-    std::shared_ptr<SilKit::IParticipant> _participant;
-    SilKit::Services::Can::ICanController* _canController{nullptr};
-    SilKit::Services::Ethernet::IEthernetController* _ethController{nullptr};
+private:
+    // Controllers
+    SilKit::Services::Can::ICanController* _can{nullptr};
+    SilKit::Services::Ethernet::IEthernetController* _eth{nullptr};
+
+    // Worker threads
+    std::unique_ptr<EthReceiver> _ethRx;
+    std::unique_ptr<CanSender>   _canTx;
+
+    // Config
+    std::string _canNetwork = "CAN1";
+    std::string _ethNetwork = "ETH1";
 };

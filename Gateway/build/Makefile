@@ -129,6 +129,54 @@ GatewayDemo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/build
 .PHONY : GatewayDemo/fast
 
+CanSender.o: CanSender.cpp.o
+.PHONY : CanSender.o
+
+# target to build an object file
+CanSender.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/CanSender.cpp.o
+.PHONY : CanSender.cpp.o
+
+CanSender.i: CanSender.cpp.i
+.PHONY : CanSender.i
+
+# target to preprocess a source file
+CanSender.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/CanSender.cpp.i
+.PHONY : CanSender.cpp.i
+
+CanSender.s: CanSender.cpp.s
+.PHONY : CanSender.s
+
+# target to generate assembly for a file
+CanSender.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/CanSender.cpp.s
+.PHONY : CanSender.cpp.s
+
+EthReceiver.o: EthReceiver.cpp.o
+.PHONY : EthReceiver.o
+
+# target to build an object file
+EthReceiver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o
+.PHONY : EthReceiver.cpp.o
+
+EthReceiver.i: EthReceiver.cpp.i
+.PHONY : EthReceiver.i
+
+# target to preprocess a source file
+EthReceiver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.i
+.PHONY : EthReceiver.cpp.i
+
+EthReceiver.s: EthReceiver.cpp.s
+.PHONY : EthReceiver.s
+
+# target to generate assembly for a file
+EthReceiver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.s
+.PHONY : EthReceiver.cpp.s
+
 GatewayApp.o: GatewayApp.cpp.o
 .PHONY : GatewayApp.o
 
@@ -153,6 +201,30 @@ GatewayApp.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.s
 .PHONY : GatewayApp.cpp.s
 
+GlobalBuffer.o: GlobalBuffer.cpp.o
+.PHONY : GlobalBuffer.o
+
+# target to build an object file
+GlobalBuffer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o
+.PHONY : GlobalBuffer.cpp.o
+
+GlobalBuffer.i: GlobalBuffer.cpp.i
+.PHONY : GlobalBuffer.i
+
+# target to preprocess a source file
+GlobalBuffer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.i
+.PHONY : GlobalBuffer.cpp.i
+
+GlobalBuffer.s: GlobalBuffer.cpp.s
+.PHONY : GlobalBuffer.s
+
+# target to generate assembly for a file
+GlobalBuffer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/GatewayDemo.dir/build.make CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.s
+.PHONY : GlobalBuffer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,9 +234,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... GatewayDemo"
+	@echo "... CanSender.o"
+	@echo "... CanSender.i"
+	@echo "... CanSender.s"
+	@echo "... EthReceiver.o"
+	@echo "... EthReceiver.i"
+	@echo "... EthReceiver.s"
 	@echo "... GatewayApp.o"
 	@echo "... GatewayApp.i"
 	@echo "... GatewayApp.s"
+	@echo "... GlobalBuffer.o"
+	@echo "... GlobalBuffer.i"
+	@echo "... GlobalBuffer.s"
 .PHONY : help
 
 

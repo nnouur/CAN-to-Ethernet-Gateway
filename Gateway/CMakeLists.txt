@@ -8,7 +8,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(SILKIT_INCLUDE_DIR "../SilKit/include")
 set(SILKIT_LIB_DIR "../SilKit/lib")
 
-add_executable(GatewayDemo GatewayApp.cpp GatewayApp.hpp)
+add_executable(GatewayDemo
+    GatewayApp.cpp
+    GlobalBuffer.cpp
+    EthReceiver.cpp
+    CanSender.cpp
+)
 
 target_include_directories(GatewayDemo PRIVATE ${SILKIT_INCLUDE_DIR})
 target_link_directories(GatewayDemo PRIVATE ${SILKIT_LIB_DIR})

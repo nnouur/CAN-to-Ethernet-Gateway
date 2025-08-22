@@ -1,111 +1,73 @@
 #include "GatewayApp.hpp"
-#include <iostream>
-#include <vector>
+#include "../CAN/CanDemoCommon.hpp"
+#include "../ETHERNET/EthernetDemoCommon.hpp"
 
+using namespace SilKit::Services;
 
-GatewayApp::GatewayApp(const std::string& participantName,
-                      const std::string& configFilePath)
+GatewayApp::~GatewayApp()
 {
-   auto participantConfig =
-       SilKit::Config::ParticipantConfigurationFromFile(configFilePath);
-
-
-   _participant = SilKit::CreateParticipant(participantConfig, participantName);
-
-
-   // Connexion aux contrôleurs existants
-   _canController = _participant->CreateCanController("CAN1", "CAN1");
-   _ethController = _participant->CreateEthernetController("ETH1", "ETH1");
-
-
-   // Abonnement CAN → Ethernet
-   _canController->AddFrameHandler(
-       [this](SilKit::Services::Can::ICanController* /*ctrl*/,
-              const SilKit::Services::Can::CanFrameEvent& frameEvent) {
-           OnCanFrameReceived(frameEvent.frame);
-       });
-
-
-   // Abonnement Ethernet → CAN
-   _ethController->AddFrameHandler(
-       [this](SilKit::Services::Ethernet::IEthernetController* /*ctrl*/,
-              const SilKit::Services::Ethernet::EthernetFrameEvent& frameEvent) {
-           OnEthernetFrameReceived(frameEvent.frame);
-       });
+    if (_canTx) _canTx->Stop();
+    if (_ethRx) _ethRx->Stop();
 }
 
-
-void GatewayApp::OnCanFrameReceived(const SilKit::Services::Can::CanFrame& canFrame)
+void GatewayApp::AddCommandLineArgs()
 {
-   SilKit::Services::Ethernet::EthernetFrame ethFrame;
+    GetCommandLineParser()->Add<CommandlineParser::Option>(
+        "can-network", "C", _canNetwork, "-C, --can-network <name>",
+        std::vector<std::string>{"CAN network name. Defaults to '" + _canNetwork + "'."});
 
-
-   // Copier le contenu car Span n'a pas assign
-   std::vector<uint8_t> data(canFrame.dataField.begin(), canFrame.dataField.end());
-   ethFrame.raw = data;
-
-
-   _ethController->SendFrame(ethFrame);
-   std::cout << "[Gateway] CAN → ETH frame sent, size=" << canFrame.dataField.size() << "\n";
+    GetCommandLineParser()->Add<CommandlineParser::Option>(
+        "eth-network", "E", _ethNetwork, "-E, --eth-network <name>",
+        std::vector<std::string>{"Ethernet network name. Defaults to '" + _ethNetwork + "'."});
 }
 
-
-void GatewayApp::OnEthernetFrameReceived(const SilKit::Services::Ethernet::EthernetFrame& ethFrame)
+void GatewayApp::EvaluateCommandLineArgs()
 {
-   SilKit::Services::Can::CanFrame canFrame{};
-   canFrame.canId = 0x123; // Nom de champ correct dans SilKit
-   canFrame.flags = {};
-  
-   std::vector<uint8_t> data(ethFrame.raw.begin(), ethFrame.raw.end());
-   canFrame.dataField = data;
-
-
-   _canController->SendFrame(canFrame);
-   std::cout << "[Gateway] ETH → CAN frame sent, size=" << ethFrame.raw.size() << "\n";
+    _canNetwork = GetCommandLineParser()->Get<CommandlineParser::Option>("can-network").Value();
+    _ethNetwork = GetCommandLineParser()->Get<CommandlineParser::Option>("eth-network").Value();
 }
 
-
-void GatewayApp::Run()
+void GatewayApp::CreateControllers()
 {
-   std::cout << "[Gateway] Running..." << std::endl;
+    // Create controllers on the networks used by your existing apps
+    _can = GetParticipant()->CreateCanController("GatewayCanController", _canNetwork);
+    _eth = GetParticipant()->CreateEthernetController("GatewayEthernetController", _ethNetwork);
 
-
-   // SilKit n’a pas de Run() → juste attendre
-   while (true)
-   {
-       std::this_thread::sleep_for(std::chrono::seconds(1));
-   }
+    // TX acks logging (handlers in *DemoCommon must be inline to avoid ODR)
+    _can->AddFrameTransmitHandler([this](Can::ICanController*, const Can::CanFrameTransmitEvent& ack) {
+        CanDemoCommon::FrameTransmitHandler(ack, GetLogger());
+    });
+    _eth->AddFrameTransmitHandler([this](Ethernet::IEthernetController*, const Ethernet::EthernetFrameTransmitEvent& ack) {
+        EthernetDemoCommon::FrameTransmitHandler(ack, GetLogger());
+    });
 }
 
+void GatewayApp::InitControllers()
+{
+    // Bring controllers up like your other demos
+    _eth->Activate();
+    _can->Start();
 
-// -------- main (single-file approach) --------
+    // Start worker 1: Ethernet receiver -> GlobalBuffer
+    _ethRx = std::make_unique<EthReceiver>(_eth);
+    _ethRx->Start();
+    std::cout << "[Gateway] Ethernet Receiver started\n";
 
 
+    // Start worker 2: GlobalBuffer -> CAN sender
+    _canTx = std::make_unique<CanSender>(_can, 0x123);
+    _canTx->Start();
+    std::cout << "[Gateway] CAN Sender started\n";
+}
+
+// ---------- MAIN inside the same file ----------
 int main(int argc, char** argv)
 {
-   if (argc < 3)
-   {
-       std::cerr << "Usage: " << argv[0] << " <ParticipantName> <ConfigFilePath>\n";
-       return 1;
-   }
+    Arguments args;
+    args.participantName = "Gateway";
+    args.duration = 5ms; // keep it small and responsive
 
-
-   try
-   {
-       std::string participantName = argv[1];
-       std::string configPath = argv[2];
-
-
-       GatewayApp app(participantName, configPath);
-       app.Run();
-   }
-   catch (const std::exception& e)
-   {
-       std::cerr << "[Gateway] Exception: " << e.what() << "\n";
-       return 1;
-   }
-
-
-   return 0;
+    GatewayApp app{args};
+    app.SetupCommandLineArgs(argc, argv, "SIL Kit Demo - Ethernet->CAN Gateway (2-thread)");
+    return app.Run();
 }
-

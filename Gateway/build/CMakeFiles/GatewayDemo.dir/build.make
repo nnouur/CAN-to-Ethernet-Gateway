@@ -83,17 +83,65 @@ CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/GatewayApp.cpp -o CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.s
 
+CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o: CMakeFiles/GatewayDemo.dir/flags.make
+CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o: ../GlobalBuffer.cpp
+CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o: CMakeFiles/GatewayDemo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o -MF CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o.d -o CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o -c /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/GlobalBuffer.cpp
+
+CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/GlobalBuffer.cpp > CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.i
+
+CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/GlobalBuffer.cpp -o CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.s
+
+CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o: CMakeFiles/GatewayDemo.dir/flags.make
+CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o: ../EthReceiver.cpp
+CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o: CMakeFiles/GatewayDemo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o -MF CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o.d -o CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o -c /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/EthReceiver.cpp
+
+CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/EthReceiver.cpp > CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.i
+
+CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/EthReceiver.cpp -o CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.s
+
+CMakeFiles/GatewayDemo.dir/CanSender.cpp.o: CMakeFiles/GatewayDemo.dir/flags.make
+CMakeFiles/GatewayDemo.dir/CanSender.cpp.o: ../CanSender.cpp
+CMakeFiles/GatewayDemo.dir/CanSender.cpp.o: CMakeFiles/GatewayDemo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/GatewayDemo.dir/CanSender.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/GatewayDemo.dir/CanSender.cpp.o -MF CMakeFiles/GatewayDemo.dir/CanSender.cpp.o.d -o CMakeFiles/GatewayDemo.dir/CanSender.cpp.o -c /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/CanSender.cpp
+
+CMakeFiles/GatewayDemo.dir/CanSender.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/GatewayDemo.dir/CanSender.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/CanSender.cpp > CMakeFiles/GatewayDemo.dir/CanSender.cpp.i
+
+CMakeFiles/GatewayDemo.dir/CanSender.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/GatewayDemo.dir/CanSender.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/CanSender.cpp -o CMakeFiles/GatewayDemo.dir/CanSender.cpp.s
+
 # Object files for target GatewayDemo
 GatewayDemo_OBJECTS = \
-"CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.o"
+"CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.o" \
+"CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o" \
+"CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o" \
+"CMakeFiles/GatewayDemo.dir/CanSender.cpp.o"
 
 # External object files for target GatewayDemo
 GatewayDemo_EXTERNAL_OBJECTS =
 
 GatewayDemo: CMakeFiles/GatewayDemo.dir/GatewayApp.cpp.o
+GatewayDemo: CMakeFiles/GatewayDemo.dir/GlobalBuffer.cpp.o
+GatewayDemo: CMakeFiles/GatewayDemo.dir/EthReceiver.cpp.o
+GatewayDemo: CMakeFiles/GatewayDemo.dir/CanSender.cpp.o
 GatewayDemo: CMakeFiles/GatewayDemo.dir/build.make
 GatewayDemo: CMakeFiles/GatewayDemo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable GatewayDemo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nour/Desktop/CAN-to-Ethernet-Gateway-main/Gateway/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable GatewayDemo"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/GatewayDemo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: 2024 Vector Informatik GmbH
 //
 // SPDX-License-Identifier: MIT
+#pragma once
 
 #include "silkit/services/ethernet/all.hpp"
 #include "silkit/services/ethernet/string_utils.hpp"
@@ -22,7 +23,7 @@ namespace EthernetDemoCommon {
 using EtherType = uint16_t;
 using EthernetMac = std::array<uint8_t, 6>;
 
-void FrameTransmitHandler(const EthernetFrameTransmitEvent& frameTransmitEvent, ILogger* logger)
+inline void FrameTransmitHandler(const EthernetFrameTransmitEvent& frameTransmitEvent, ILogger* logger)
 {
     std::stringstream ss;
     if (frameTransmitEvent.status == EthernetTransmitStatus::Transmitted)
@@ -67,7 +68,7 @@ auto PrintPayload(const std::vector<uint8_t>& payload, bool printHex)
     return ss.str();
 }
 
-void FrameHandler(const EthernetFrameEvent& ethernetFrameEvent, ILogger* logger, bool printHex)
+inline void FrameHandler(const EthernetFrameEvent& ethernetFrameEvent, ILogger* logger, bool printHex)
 {
     const size_t FrameHeaderSize = 2 * sizeof(EthernetMac) + sizeof(EtherType);
     std::vector<uint8_t> payloadWithoutHeader;
@@ -79,4 +80,4 @@ void FrameHandler(const EthernetFrameEvent& ethernetFrameEvent, ILogger* logger,
     logger->Info(ss.str());
 }
 
-} // namespace EthernetDemoBehavior
+} // namespace EthernetDemoCommon
