@@ -13,7 +13,7 @@ public:
 
 private:
     IEthernetController* _ethernetController{nullptr};
-    std::string _networkName = "Eth1";
+    std::string _networkName = "ETH1";
     bool _printHex{false};
     int _frameId = 0;
 
@@ -79,7 +79,7 @@ private:
         std::stringstream stream;
         // Ensure that the payload is long enough to constitute a valid Ethernet frame
         stream << "Hello from Ethernet writer! (frameId=" << _frameId
-               << ")----------------------------------------------------";
+               << ")";
         auto payloadString = stream.str();
         std::vector<uint8_t> payload(payloadString.begin(), payloadString.end());
         auto frame = CreateFrame(BroadcastMacAddr, WriterMacAddr, payload);

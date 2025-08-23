@@ -16,6 +16,8 @@ void EthReceiver::Start()
         stream << "[Gateway] Received Ethernet frame ("
                << frameEvent.frame.raw.size() << " bytes)";
         std::cout << stream.str() << std::endl;
+        // Forward the frame into the Rx queue
+        OnEthernetFrame(frameEvent);
     });
 
     _running = true;

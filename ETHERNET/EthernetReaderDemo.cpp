@@ -13,7 +13,7 @@ public:
 
 private:
     IEthernetController* _ethernetController{nullptr};
-    std::string _networkName = "Eth1";
+    std::string _networkName = "ETH1";
     bool _printHex{false};
 
     void AddCommandLineArgs() override

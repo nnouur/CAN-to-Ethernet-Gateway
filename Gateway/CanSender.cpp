@@ -35,12 +35,8 @@ void CanSender::TxThreadLoop()
         frame.canId = _canId;
         frame.dataField = std::move(payload); // most SIL Kit versions support vector here
 
-        // 💡 Log to console before sending
-        std::stringstream stream;
-        stream << "[Gateway] Sending CAN frame from Gateway (canId=" << frame.canId
-               << ", size=" << frame.dataField.size() << " bytes)";
-        std::cout << stream.str() << std::endl;
-
         _can->SendFrame(frame);
+        std::cout << "[CanSender] Frame sent from Gateway to CAN "
+                << payload.size() << " bytes" << std::endl;
     }
 }
